@@ -45,6 +45,7 @@ module.exports = {
   RPCHOST: `http://127.0.0.1:${rpcPort}`,
   NETWORK: conf.regtest == "1" ? "regtest" : (conf.testnet == "1" ? "testnet" : "mainnet"),
   ADDRESS: conf.address || "bcrt1qsaeer4a4uw445eeethryedutp95jl3nwuulmmu",
+  INTERVAL: parseInt(conf.interval || "10", 10),
   DATADIR,
   parseConfig,
 };

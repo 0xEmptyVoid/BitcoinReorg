@@ -188,7 +188,7 @@ async function simulateReorg() {
 
   const intervalSec = await promptInput(
     "Mining interval/delay between blocks (seconds)",
-    "2"
+    String(config.INTERVAL)
   );
   if (intervalSec === null) return;
 

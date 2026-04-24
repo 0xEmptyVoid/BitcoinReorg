@@ -17,7 +17,7 @@ const readline = require("readline");
 // ── Shared State ────────────────────────────────────────────
 let autoMinerTimer = null;
 let autoMinerActive = false;
-let autoMinerConfig = { interval: 10, address: config.ADDRESS };
+let autoMinerConfig = { interval: config.INTERVAL, address: config.ADDRESS };
 let blocksMinedSession = 0;
 let autoMinerStartTime = null;
 let autoMinerLogs = []; // Store recent logs in memory
@@ -37,7 +37,8 @@ function renderConfig() {
   logger.keyValue("Network", colors.success(config.NETWORK));
   logger.keyValue("RPC Host", colors.warning(config.RPCHOST));
   logger.keyValue("RPC User", colors.dim(config.RPCUSER));
-  logger.keyValue("Address", colors.accent(config.ADDRESS), "└─");
+  logger.keyValue("Address", colors.accent(config.ADDRESS));
+  logger.keyValue("Interval", colors.info(`${config.INTERVAL}s`), "└─");
   console.log("");
 }
 
@@ -154,7 +155,7 @@ async function handleAutoMiner() {
     return;
   }
 
-  const intervalSec = await promptInput("Mining interval (seconds)", "10");
+  const intervalSec = await promptInput("Mining interval (seconds)", String(config.INTERVAL));
   if (intervalSec === null) return;
 
   const address = await promptInput("Mining address", config.ADDRESS);
