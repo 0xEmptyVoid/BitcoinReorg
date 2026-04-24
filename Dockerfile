@@ -45,8 +45,8 @@ RUN chown -R bitcoin:bitcoin /home/bitcoin && \
 # Switch to bitcoin user
 USER bitcoin
 
-# Expose RPC port
-EXPOSE 18443
+# Expose RPC and P2P ports
+EXPOSE 18443 18444
 
 # Default command
 CMD ["./run_docker.sh"]
