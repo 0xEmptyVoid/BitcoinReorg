@@ -128,12 +128,23 @@ A guided 6-step process to simulate complex chain events:
 The application uses `bitcoin.conf` for all PRC connections. You can modify this file to point to an external node if needed.
 
 ```ini
+# Global settings
 regtest=1
+
+# Regtest-specific settings
 [regtest]
+datadir=D:\bitcoin\btc-node1
+server=1
 rpcuser=admin
 rpcpassword=admin123
 rpcport=18443
+port=18444
+listen=1
+fallbackfee=0.00001
+
+# mining configuration
 address=bcrt1qsaeer4a4uw445eeethryedutp95jl3nwuulmmu
+interval=5
 ```
 
 ---
